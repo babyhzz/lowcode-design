@@ -70,11 +70,11 @@ model RolePermission {
 
 model Permission {
   id          String           @id @default(uuid())
-  parentId    String
-  type        String
-  action      String
-  url         String
-  description String
+  parentId    String?
+  type        Int
+  name        String
+  url         String?
+  description String?
   createdAt   DateTime         @default(now())
   createdBy   String?
   updatedAt   DateTime         @updatedAt

@@ -7,6 +7,14 @@ const prisma = new PrismaClient();
 
 async function main() {
   // create two dummy articles
+  prisma.permission.createMany({
+    data: [
+      {
+        name: '系统',
+      },
+    ],
+  });
+
   const post1 = await prisma.article.upsert({
     where: { title: 'Prisma Adds Support for MongoDB' },
     update: {},
