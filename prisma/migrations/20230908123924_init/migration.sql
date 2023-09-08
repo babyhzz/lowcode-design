@@ -1,15 +1,18 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE `Article` (
+    `id` VARCHAR(191) NOT NULL,
+    `title` VARCHAR(191) NOT NULL,
+    `description` VARCHAR(191) NULL,
+    `body` VARCHAR(191) NOT NULL,
+    `published` BOOLEAN NOT NULL DEFAULT false,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `createdBy` VARCHAR(191) NULL,
+    `updatedAt` DATETIME(3) NOT NULL,
+    `updatedBy` VARCHAR(191) NULL,
 
-  - The primary key for the `Article` table will be changed. If it partially fails, the table could be left without primary key constraint.
-
-*/
--- AlterTable
-ALTER TABLE `Article` DROP PRIMARY KEY,
-    ADD COLUMN `createdBy` VARCHAR(191) NULL,
-    ADD COLUMN `updatedBy` VARCHAR(191) NULL,
-    MODIFY `id` VARCHAR(191) NOT NULL,
-    ADD PRIMARY KEY (`id`);
+    UNIQUE INDEX `Article_title_key`(`title`),
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `User` (
@@ -18,9 +21,9 @@ CREATE TABLE `User` (
     `name` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `createdBy` VARCHAR(191) NOT NULL,
+    `createdBy` VARCHAR(191) NULL,
     `updatedAt` DATETIME(3) NOT NULL,
-    `updatedBy` VARCHAR(191) NOT NULL,
+    `updatedBy` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -41,9 +44,9 @@ CREATE TABLE `Role` (
     `code` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `createdBy` VARCHAR(191) NOT NULL,
+    `createdBy` VARCHAR(191) NULL,
     `updatedAt` DATETIME(3) NOT NULL,
-    `updatedBy` VARCHAR(191) NOT NULL,
+    `updatedBy` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -61,15 +64,15 @@ CREATE TABLE `RolePermission` (
 -- CreateTable
 CREATE TABLE `Permission` (
     `id` VARCHAR(191) NOT NULL,
-    `parentId` VARCHAR(191) NOT NULL,
-    `type` VARCHAR(191) NOT NULL,
-    `action` VARCHAR(191) NOT NULL,
-    `url` VARCHAR(191) NOT NULL,
-    `description` VARCHAR(191) NOT NULL,
+    `parentId` VARCHAR(191) NULL,
+    `type` INTEGER NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
+    `url` VARCHAR(191) NULL,
+    `description` VARCHAR(191) NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    `createdBy` VARCHAR(191) NOT NULL,
+    `createdBy` VARCHAR(191) NULL,
     `updatedAt` DATETIME(3) NOT NULL,
-    `updatedBy` VARCHAR(191) NOT NULL,
+    `updatedBy` VARCHAR(191) NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
