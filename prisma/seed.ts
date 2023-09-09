@@ -1,10 +1,13 @@
 // prisma/seed.ts
 
 import { PrismaClient } from '@prisma/client';
-import { PermissionType } from '@packages/shared';
+import { MenuRenderType, PermissionType } from '@packages/shared';
 
 // initialize Prisma Client
 const prisma = new PrismaClient();
+
+// uuid:
+// 6ec2a4d7-58d9-4e85-906b-8534cf011a4a
 
 async function initSystemPermission() {
   // create two dummy articles
@@ -20,21 +23,96 @@ async function initSystemPermission() {
     data: [
       {
         name: '系统菜单',
-        type: PermissionType.MENU,
+        type: PermissionType.PAGE,
         url: '/system/menu',
         parentId: parent.id,
+        renderType: MenuRenderType.AMIS,
+        renderParams: JSON.stringify({
+          type: 'page',
+          title: '表单页面',
+          body: [
+            {
+              type: 'form',
+              mode: 'horizontal',
+              api: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm',
+              body: [
+                {
+                  label: 'Name',
+                  type: 'input-text',
+                  name: 'name',
+                },
+                {
+                  label: 'Email',
+                  type: 'input-email',
+                  placeholder: '请输入邮箱地址',
+                  name: 'email',
+                },
+              ],
+            },
+          ],
+        }),
       },
       {
         name: '系统用户',
-        type: PermissionType.MENU,
+        type: PermissionType.PAGE,
         url: '/system/user',
         parentId: parent.id,
+        renderType: MenuRenderType.AMIS,
+        renderParams: JSON.stringify({
+          type: 'page',
+          title: '表单页面',
+          body: [
+            {
+              type: 'form',
+              mode: 'horizontal',
+              api: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm',
+              body: [
+                {
+                  label: 'Name',
+                  type: 'input-text',
+                  name: 'name',
+                },
+                {
+                  label: 'Email',
+                  type: 'input-email',
+                  placeholder: '请输入邮箱地址',
+                  name: 'email',
+                },
+              ],
+            },
+          ],
+        }),
       },
       {
         name: '系统角色',
-        type: PermissionType.MENU,
+        type: PermissionType.PAGE,
         url: '/system/role',
         parentId: parent.id,
+        renderType: MenuRenderType.AMIS,
+        renderParams: JSON.stringify({
+          type: 'page',
+          title: '表单页面',
+          body: [
+            {
+              type: 'form',
+              mode: 'horizontal',
+              api: 'https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm',
+              body: [
+                {
+                  label: 'Name',
+                  type: 'input-text',
+                  name: 'name',
+                },
+                {
+                  label: 'Email',
+                  type: 'input-email',
+                  placeholder: '请输入邮箱地址',
+                  name: 'email',
+                },
+              ],
+            },
+          ],
+        }),
       },
     ],
   });

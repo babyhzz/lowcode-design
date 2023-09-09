@@ -69,15 +69,18 @@ model RolePermission {
 }
 
 model Permission {
-  id          String           @id @default(uuid())
-  parentId    String?
-  type        Int
-  name        String
-  url         String?
-  description String?
-  createdAt   DateTime         @default(now())
-  createdBy   String?
-  updatedAt   DateTime         @updatedAt
-  updatedBy   String?
-  roles       RolePermission[]
+  id           String           @id @default(uuid())
+  parentId     String?
+  type         Int
+  name         String
+  url          String?
+  redirectUrl  String?
+  renderType   Int?             @db.UnsignedTinyInt
+  renderParams String?          @db.Text
+  description  String?
+  createdAt    DateTime         @default(now())
+  createdBy    String?
+  updatedAt    DateTime         @updatedAt
+  updatedBy    String?
+  roles        RolePermission[]
 }
