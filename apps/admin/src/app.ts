@@ -1,14 +1,14 @@
 import type { RequestConfig } from 'umi';
 
-import { getPermissions } from './services/permission';
+import { getPermissionMenus } from './services/permission';
+import { arrayToTree } from '@packages/shared';
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
-export async function getInitialState(): Promise<{ name: string }> {
-  const res = await getPermissions();
-  console.log(res);
+export async function getInitialState(): Promise<{ menus: string }> {
+  const res = await getPermissionMenus();
 
-  return { name: '@umijs/max' };
+  return { menus: arrayToTree(res) };
 }
 
 export const request: RequestConfig = {

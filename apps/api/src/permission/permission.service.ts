@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PrismaService } from '@/prisma/prisma.service';
+import { PermissionType } from '@packages/shared';
 
 @Injectable()
 export class PermissionService {
@@ -13,6 +14,17 @@ export class PermissionService {
 
   findAll() {
     return this.prisma.permission.findMany();
+  }
+
+  findAllMenus() {
+    const permissions = this.prisma.permission.findMany({
+      where: {
+        type: {
+          in: [PermissionType.MENU, PermissionType.PAGE],
+        },
+      },
+    });
+    return permissions;
   }
 
   findOne(id: number) {

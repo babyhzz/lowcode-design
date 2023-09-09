@@ -73,7 +73,7 @@ model Permission {
   parentId     String?
   type         Int
   name         String
-  url          String?
+  path         String?
   redirectUrl  String?
   renderType   Int?             @db.UnsignedTinyInt
   renderParams String?          @db.Text

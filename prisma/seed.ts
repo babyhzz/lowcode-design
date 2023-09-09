@@ -15,7 +15,7 @@ async function initSystemPermission() {
     data: {
       name: '系统管理',
       type: PermissionType.MENU,
-      url: '/system',
+      path: '/system',
     },
   });
 
@@ -24,7 +24,7 @@ async function initSystemPermission() {
       {
         name: '系统菜单',
         type: PermissionType.PAGE,
-        url: '/system/menu',
+        path: '/system/menu',
         parentId: parent.id,
         renderType: MenuRenderType.AMIS,
         renderParams: JSON.stringify({
@@ -55,7 +55,7 @@ async function initSystemPermission() {
       {
         name: '系统用户',
         type: PermissionType.PAGE,
-        url: '/system/user',
+        path: '/system/user',
         parentId: parent.id,
         renderType: MenuRenderType.AMIS,
         renderParams: JSON.stringify({
@@ -86,7 +86,7 @@ async function initSystemPermission() {
       {
         name: '系统角色',
         type: PermissionType.PAGE,
-        url: '/system/role',
+        path: '/system/role',
         parentId: parent.id,
         renderType: MenuRenderType.AMIS,
         renderParams: JSON.stringify({

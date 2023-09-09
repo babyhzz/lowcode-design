@@ -1,7 +1,7 @@
 import { request } from '@umijs/max';
 
-export async function getPermissions() {
-  return request('/permission', {
+export async function getPermissionMenus() {
+  return request('/permission/menus', {
     method: 'GET',
   });
 }

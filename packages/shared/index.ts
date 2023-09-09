@@ -1,1 +1,3 @@
-export * from "./types/enums"
+export * from './types/enums';
+
+export * from './utils/menu';
