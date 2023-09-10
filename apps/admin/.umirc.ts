@@ -9,10 +9,9 @@ export default defineConfig({
   layout: false,
   routes: [
     {
-      path: '/',
+      path: '/*',
       component: '../layouts/BasicLayout',
     },
   ],
   npmClient: 'pnpm',
 });
-
