@@ -6,12 +6,24 @@ export default defineConfig({
   model: {},
   initialState: {},
   request: {},
-  layout: false,
+  layout: {
+    title: '@umijs/max',
+  },
   routes: [
     {
-      path: '/*',
-      component: '../layouts/BasicLayout',
+      path: '/:module/:page',
+      component: './AmisPage',
     },
+    // {
+    //   name: '首页',
+    //   path: '/home',
+    //   component: './Home',
+    // },
+    // {
+    //   name: '权限演示',
+    //   path: '/access',
+    //   component: './Access',
+    // },
   ],
   npmClient: 'pnpm',
 });

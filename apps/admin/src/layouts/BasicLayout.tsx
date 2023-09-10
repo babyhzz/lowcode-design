@@ -4,6 +4,7 @@ import { useModel } from '@umijs/max';
 
 export type BasicLayoutProps = ProLayoutProps;
 
+// 废弃：使用 layout 插件
 const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   const {
     initialState: { menus },

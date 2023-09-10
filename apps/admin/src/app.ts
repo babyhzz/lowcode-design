@@ -8,7 +8,7 @@ import { arrayToTree } from '@packages/shared';
 export async function getInitialState(): Promise<{ menus: string }> {
   const res = await getPermissionMenus();
 
-  return { menus: arrayToTree(res) };
+  return { menuData: arrayToTree(res) };
 }
 
 export const request: RequestConfig = {
@@ -21,4 +21,15 @@ export const request: RequestConfig = {
   },
   requestInterceptors: [],
   responseInterceptors: [],
+};
+
+export const layout = ({ initialState }) => {
+  return {
+    menu: {
+      params: initialState,
+      request: async (params, defaultMenuData) => {
+        return initialState.menuData;
+      },
+    },
+  };
 };
