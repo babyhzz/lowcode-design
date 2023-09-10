@@ -22,7 +22,10 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
 
-  app.enableCors();
+  app.enableCors({
+    origin: ['https://aisuda.github.io', 'http://localhost:8000'],
+    credentials: true,
+  });
 
   await app.listen(3000);
 }

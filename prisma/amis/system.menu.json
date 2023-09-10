@@ -1,24 +1,206 @@
 {
   "type": "page",
-  "title": "表单页面",
+  "title": "菜单管理",
   "body": [
     {
-      "type": "form",
-      "mode": "horizontal",
-      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/mock2/form/saveForm",
-      "body": [
+      "type": "flex",
+      "className": "p-1",
+      "items": [
         {
-          "label": "Name",
-          "type": "input-text",
-          "name": "name"
-        },
-        {
-          "label": "Email",
-          "type": "input-email",
-          "placeholder": "请输入邮箱地址",
-          "name": "email"
+          "type": "container",
+          "body": [
+            {
+              "type": "crud",
+              "syncLocation": false,
+              "api": {
+                "method": "get",
+                "url": "http://localhost:3000/permission/menus",
+                "messages": {},
+                "requestAdaptor": "",
+                "adaptor": ""
+              },
+              "bulkActions": [],
+              "itemActions": [],
+              "features": ["create", "filter"],
+              "filterColumnCount": 3,
+              "headerToolbar": [
+                {
+                  "label": "新增",
+                  "type": "button",
+                  "actionType": "dialog",
+                  "level": "primary",
+                  "dialog": {
+                    "title": "新增",
+                    "body": {
+                      "type": "form",
+                      "api": {
+                        "method": "post",
+                        "url": "http://localhost:3000/permission/menus",
+                        "messages": {},
+                        "requestAdaptor": "",
+                        "adaptor": ""
+                      },
+                      "body": [
+                        {
+                          "type": "input-text",
+                          "name": "type",
+                          "label": "type"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "name",
+                          "label": "name"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "path",
+                          "label": "path"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "redirect",
+                          "label": "redirect"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "schemaType",
+                          "label": "schemaType"
+                        },
+                        {
+                          "type": "input-json",
+                          "name": "schemaContent",
+                          "label": "schemaContent"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "description",
+                          "label": "description"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "createdAt",
+                          "label": "createdAt"
+                        },
+                        {
+                          "type": "input-text",
+                          "name": "createdBy",
+                          "label": "createdBy"
+                        },
+                        {
+                          "type": "input-operation",
+                          "label": "操作"
+                        }
+                      ]
+                    }
+                  },
+                  "id": "u:6001127f28a3"
+                },
+                "bulkActions"
+              ],
+              "id": "u:1e307e63b1f2",
+              "perPageAvailable": [10],
+              "messages": {},
+              "defaultParams": {},
+              "mode": "table",
+              "columnsTogglable": "auto",
+              "filterSettingSource": [
+                "id",
+                "parentId",
+                "type",
+                "name",
+                "path",
+                "redirect",
+                "schemaType",
+                "schemaContent",
+                "description",
+                "createdAt",
+                "createdBy",
+                "updatedAt",
+                "updatedBy"
+              ],
+              "columns": [
+                {
+                  "label": "type",
+                  "type": "text",
+                  "name": "type",
+                  "id": "u:8f1c13608b2b"
+                },
+                {
+                  "label": "name",
+                  "type": "text",
+                  "name": "name",
+                  "id": "u:bab6b8330019"
+                },
+                {
+                  "label": "path",
+                  "type": "text",
+                  "name": "path",
+                  "id": "u:0d5ed3cb0730"
+                },
+                {
+                  "label": "redirect",
+                  "type": "text",
+                  "name": "redirect",
+                  "id": "u:225237eb1536"
+                },
+                {
+                  "label": "schemaType",
+                  "type": "text",
+                  "name": "schemaType",
+                  "id": "u:fa35d0b30211"
+                },
+                {
+                  "label": "description",
+                  "type": "text",
+                  "name": "description",
+                  "id": "u:362e62b0f979"
+                },
+                {
+                  "label": "createdAt",
+                  "type": "text",
+                  "name": "createdAt",
+                  "id": "u:29e285d657a1"
+                },
+                {
+                  "label": "createdBy",
+                  "type": "text",
+                  "name": "createdBy",
+                  "id": "u:c109b724f5c1"
+                },
+                {
+                  "type": "operation",
+                  "label": "操作",
+                  "buttons": [],
+                  "id": "u:013ade7c6f5d"
+                }
+              ]
+            }
+          ],
+          "size": "xs",
+          "style": {
+            "position": "static",
+            "display": "block",
+            "flex": "1 1 auto",
+            "flexGrow": 1,
+            "flexBasis": "auto"
+          },
+          "wrapperBody": false,
+          "isFixedHeight": false,
+          "isFixedWidth": false,
+          "id": "u:d8ccc9168549"
         }
-      ]
+      ],
+      "style": {
+        "position": "relative"
+      },
+      "id": "u:2c86ac1b4041"
     }
-  ]
+  ],
+  "id": "u:4098d4c00086",
+  "aside": [],
+  "asideResizor": false,
+  "pullRefresh": {
+    "disabled": true
+  },
+  "regions": ["body"]
 }
