@@ -4,7 +4,7 @@ export const enum PermissionType {
   ACTION = 4,
 }
 
-export const enum MenuRenderType {
+export const enum SchemaType {
   /** 百度 amis 低代码 */
   AMIS = 1,
 }

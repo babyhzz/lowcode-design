@@ -1,5 +1,5 @@
 import AmisRenderer from '@/components/AmisRenderer';
-import { useLocation } from '@umijs/max';
+import { useLocation, useModel } from '@umijs/max';
 
 const schema = {
   type: 'page',
@@ -163,11 +163,18 @@ const schema = {
 const AmisPage: React.FC = () => {
   const location = useLocation();
 
-  console.log('location path', location);
+  const {
+    initialState: { menuData },
+  } = useModel('@@initialState');
+
+  function getSchema() {
+    const menuItem = menuData.find((m) => m.path === location.pathname);
+    return menuItem ? JSON.parse(menuItem.schemaContent) : null;
+  }
 
   return (
     <div>
-      <AmisRenderer schema={schema} />
+      <AmisRenderer schema={getSchema()} />
     </div>
   );
 };
