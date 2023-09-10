@@ -1,7 +1,10 @@
-type Tree<T> = (T & { children?: T[] })[];
-
-// 厉害！！！
-export function arrayToTree(arr, parentId = null) {
+export function arrayToTree<
+  T extends {
+    id: string;
+    parentId: string | null | undefined;
+    children?: T[];
+  },
+>(arr: T[], parentId: T['parentId'] = null) {
   const tree = [];
   for (let i = 0; i < arr.length; i++) {
     const node = arr[i];
