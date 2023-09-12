@@ -12,18 +12,11 @@ interface AmisEditorProps {
 
 export default function AmisEditor({}: AmisEditorProps) {
   const [schema, setSchema] = useState<SchemaObject>({
-    type: 'page',
-    body: [
-      'inital string',
-  
-      {
-        type: 'button',
-        label: 'Change',
-      }
-    ]
+    "type": "page",
+    "body": "Hello World!"
   });
 
-  if (schema) {
+  if (!schema) {
     return null;
   }
 

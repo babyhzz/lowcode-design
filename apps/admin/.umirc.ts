@@ -10,7 +10,6 @@ export default defineConfig({
     title: '@umijs/max',
   },
   routes: [
-
     {
       name: '首页',
       path: '/home',
@@ -18,8 +17,9 @@ export default defineConfig({
     },
     {
       name: 'Amis编辑器',
-      path: 'page-editor',
-      component: './AmisEditor'
+      path: '/page-editor',
+      component: './AmisEditor',
+      layout: false
     },
     {
       name: 'Amis渲染',
