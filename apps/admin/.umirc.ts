@@ -10,20 +10,22 @@ export default defineConfig({
     title: '@umijs/max',
   },
   routes: [
+
     {
-      path: '/:module/:page',
-      component: './AmisPage',
+      name: '首页',
+      path: '/home',
+      component: './Home',
     },
-    // {
-    //   name: '首页',
-    //   path: '/home',
-    //   component: './Home',
-    // },
-    // {
-    //   name: '权限演示',
-    //   path: '/access',
-    //   component: './Access',
-    // },
+    {
+      name: 'Amis编辑器',
+      path: 'page-editor',
+      component: './AmisEditor'
+    },
+    {
+      name: 'Amis渲染',
+      path: '/*',
+      component: './AmisPage'
+    }
   ],
   npmClient: 'pnpm',
 });
