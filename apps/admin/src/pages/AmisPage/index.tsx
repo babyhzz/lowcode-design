@@ -164,11 +164,11 @@ const AmisPage: React.FC = () => {
   const location = useLocation();
 
   const {
-    initialState: { menuData },
+    initialState: { menus },
   } = useModel('@@initialState');
 
   function getSchema() {
-    const menuItem = menuData.find((m) => m.path === location.pathname);
+    const menuItem = menus.find((m: any) => m.path === location.pathname);
     return menuItem ? JSON.parse(menuItem.schemaContent) : null;
   }
 
