@@ -7,5 +7,10 @@ interface AmisRendererProps {
 }
 
 export default function AmisRenderer({ schema }: AmisRendererProps) {
-  return <div>{renderAmis(schema)}</div>;
+  return <div>{renderAmis(schema, {}, {
+    fetcher: config => {
+      console.log(config);
+      return fetch(config.url);
+    }
+  })}</div>;
 }
