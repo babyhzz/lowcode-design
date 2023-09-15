@@ -1,0 +1,48 @@
+# 配置地址：https://www.ssssssss.org/magic-api/pages/config/spring-boot/
+server:
+  port: 9999
+magic-api:
+  #配置web页面入口
+  web: /magic/web
+  resource:
+    type: file
+    location: /Users/hucheng/my/github/lowcode-design/magic-api
+  date-pattern: # 配置请求参数支持的日期格式
+    - yyyy-MM-dd
+    - yyyy-MM-dd HH:mm:ss
+  response-code:
+    success: 0
+    invalid: 400
+    exception: 500
+  crud: # CRUD相关配置
+    logic-delete-column: deleted #逻辑删除列
+    logic-delete-value: 1 #逻辑删除值
+  response: |-
+    {
+      status: code,
+      msg: message,
+      data,
+      timestamp,
+      requestTime,
+      executeTime,
+    }
+  page:
+    page: page,
+    size: perPage
+    default-page: 1
+    default-size: 20
+#  security:
+#    username: admin
+#    password: 111111
+#  backup:
+#    enable: true
+#    table-name: bak-magic-api
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lowcode?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: hucheng@2016
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

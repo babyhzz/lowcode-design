@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "e520f5044adf4947867e4a9e4d0ba8fd",
+  "name" : "系统权限",
+  "type" : "api",
+  "parentId" : "0",
+  "path" : "permission",
+  "createTime" : 1694817717477,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}
