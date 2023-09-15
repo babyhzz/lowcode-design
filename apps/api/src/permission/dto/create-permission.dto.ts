@@ -1,15 +1,26 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { PermissionType } from '@packages/shared';
 import { Prisma } from '@prisma/client';
 
 export class CreatePermissionDto implements Prisma.PermissionCreateInput {
-  id?: string;
+  @ApiProperty({
+    required: false,
+  })
   parentId?: string;
-  type: number;
+
+  @ApiProperty()
+  type: PermissionType;
+
+  @ApiProperty()
   name: string;
-  url?: string;
+
+  @ApiProperty({
+    required: false,
+  })
+  path?: string;
+
+  @ApiProperty({
+    required: false,
+  })
   description?: string;
-  createdAt?: string | Date;
-  createdBy?: string;
-  updatedAt?: string | Date;
-  updatedBy?: string;
-  roles?: Prisma.RolePermissionCreateNestedManyWithoutPermissionInput;
 }
