@@ -37,6 +37,11 @@ export class PermissionController {
     return this.permissionService.update(id, updatePermissionDto);
   }
 
+  @Patch(':id/schema')
+  updateSchema(@Param('id') id: string, @Body() updatePermissionDto: UpdatePermissionDto) {
+    return this.permissionService.updateSchema(id, updatePermissionDto.schemaContent);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.permissionService.remove(id);

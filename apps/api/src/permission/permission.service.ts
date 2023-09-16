@@ -56,6 +56,17 @@ export class PermissionService {
     return `This action updates a #${id} permission`;
   }
 
+  async updateSchema(id: string, schemaContent: string) {
+    return this.prisma.permission.update({
+      where: {
+        id,
+      },
+      data: {
+        schemaContent,
+      },
+    });
+  }
+
   remove(id: string) {
     return `This action removes a #${id} permission`;
   }

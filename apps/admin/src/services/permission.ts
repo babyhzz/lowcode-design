@@ -10,3 +10,10 @@ export async function getPermissionSchema(id: string | null | undefined) {
     method: 'GET',
   });
 }
+
+export async function updatePermissionSchema(id: string | null | undefined, schemaContent: string) {
+  return request(`/permission/${id}/schema`, {
+    method: 'PATCH',
+    data: { schemaContent },
+  });
+}

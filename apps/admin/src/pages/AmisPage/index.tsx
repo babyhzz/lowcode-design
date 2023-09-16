@@ -1,6 +1,6 @@
 import AmisRenderer from '@/components/AmisRenderer';
 import useSchema from '@/hooks/useSchema';
-import { useLocation, useModel } from '@umijs/max';
+import { Helmet, useLocation, useModel } from '@umijs/max';
 
 const schema = {
   type: 'page',
@@ -172,7 +172,7 @@ const AmisPage: React.FC = () => {
   const { schema } = useSchema(menuItem?.id);
 
   return (
-    <div>
+    <div className="h-screen">
       <AmisRenderer schema={schema} />
     </div>
   );

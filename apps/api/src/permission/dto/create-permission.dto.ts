@@ -23,4 +23,14 @@ export class CreatePermissionDto implements Prisma.PermissionCreateInput {
     required: false,
   })
   description?: string;
+
+  @ApiProperty({
+    required: false,
+  })
+  schemaType?: number;
+
+  @ApiProperty({
+    required: false,
+  })
+  schemaContent?: string;
 }
