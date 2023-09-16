@@ -23,6 +23,17 @@ export class PermissionService {
           in: [PermissionType.MENU, PermissionType.PAGE],
         },
       },
+      select: {
+        id: true,
+        parentId: true,
+        name: true,
+        path: true,
+        type: true,
+        redirect: true,
+        schemaType: true,
+        createdAt: true,
+        createdBy: true,
+      },
     });
     return permissions;
   }
