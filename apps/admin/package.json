@@ -16,8 +16,7 @@
     "@umijs/max": "^4.0.79",
     "amis": "^3.4.0",
     "amis-editor": "^5.5.0",
-    "amis-editor-core": "^5.5.0",
-    "antd": "^5.4.0"
+    "amis-editor-core": "^5.5.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.33",

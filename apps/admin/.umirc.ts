@@ -1,8 +1,8 @@
 import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
-  antd: {},
-  access: {},
+  antd: false,
+  access: false,
   model: {},
   initialState: {},
   request: {},
@@ -19,13 +19,13 @@ export default defineConfig({
       name: 'Amis编辑器',
       path: '/page-editor',
       component: './AmisEditor',
-      layout: false
+      layout: false,
     },
     {
       name: 'Amis渲染',
       path: '/*',
-      component: './AmisPage'
-    }
+      component: './AmisPage',
+    },
   ],
   npmClient: 'pnpm',
 });

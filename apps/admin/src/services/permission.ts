@@ -5,7 +5,7 @@ export async function getPermissionMenus() {
     method: 'GET',
   });
 }
-export async function getPermissionSchema(id: string) {
+export async function getPermissionSchema(id: string | null | undefined) {
   return request(`/permission/${id}/schema`, {
     method: 'GET',
   });
