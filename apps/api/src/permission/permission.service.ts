@@ -42,15 +42,14 @@ export class PermissionService {
     return `This action returns a #${id} permission`;
   }
 
-  findOneScheme(id: string) {
-    const schemaContent = this.prisma.permission.findUnique({
+  async findOneScheme(id: string) {
+    const result = await this.prisma.permission.findUnique({
       where: { id },
       select: {
         schemaContent: true,
       },
     });
-
-    return schemaContent ? JSON.parse(schemaContent) : {};
+    return result ? JSON.parse(result.schemaContent) : null;
   }
 
   update(id: string, updatePermissionDto: UpdatePermissionDto) {
