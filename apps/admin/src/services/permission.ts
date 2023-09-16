@@ -5,3 +5,8 @@ export async function getPermissionMenus() {
     method: 'GET',
   });
 }
+export async function getPermissionSchema(id: string) {
+  return request(`/permission/${id}/schema`, {
+    method: 'GET',
+  });
+}

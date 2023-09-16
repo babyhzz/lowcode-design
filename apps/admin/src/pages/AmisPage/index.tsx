@@ -1,4 +1,5 @@
 import AmisRenderer from '@/components/AmisRenderer';
+import useSchema from '@/hooks/useSchema';
 import { useLocation, useModel } from '@umijs/max';
 
 const schema = {
@@ -167,14 +168,12 @@ const AmisPage: React.FC = () => {
     initialState: { menus },
   } = useModel('@@initialState');
 
-  function getSchema() {
-    const menuItem = menus.find((m: any) => m.path === location.pathname);
-    return menuItem ? JSON.parse(menuItem.schemaContent) : null;
-  }
+  const menuItem = menus.find((m: any) => m.path === location.pathname);
+  const { schema } = useSchema(menuItem?.id);
 
   return (
     <div>
-      <AmisRenderer schema={getSchema()} />
+      <AmisRenderer schema={schema} />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { RunTimeLayoutConfig } from '@umijs/max';
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<{ menus: any[] }> {
   const res = await getPermissionMenus();
-  return { menus: res };
+  return { menus: res.data };
 }
 
 export const request: RequestConfig = {

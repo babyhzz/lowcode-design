@@ -38,15 +38,26 @@ export class PermissionService {
     return permissions;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} permission`;
   }
 
-  update(id: number, updatePermissionDto: UpdatePermissionDto) {
+  findOneScheme(id: string) {
+    const schemaContent = this.prisma.permission.findUnique({
+      where: { id },
+      select: {
+        schemaContent: true,
+      },
+    });
+
+    return schemaContent ? JSON.parse(schemaContent) : {};
+  }
+
+  update(id: string, updatePermissionDto: UpdatePermissionDto) {
     return `This action updates a #${id} permission`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} permission`;
   }
 }

@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["lowcode", "realname"]
+  "cSpell.words": [
+    "lowcode",
+    "realname"
+  ],
+  "editor.formatOnSave": true
 }
