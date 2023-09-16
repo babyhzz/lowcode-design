@@ -9,6 +9,7 @@ import 'amis/sdk/iconfont.css';
 import { useEffect, useState } from 'react';
 import styles from './index.less';
 import { Button, Space } from 'antd';
+import { useInterval } from 'ahooks';
 
 interface AmisEditorProps {
   name?: string;
@@ -30,6 +31,8 @@ export default function AmisEditor({}: AmisEditorProps) {
   const saveSchema = async () => {
     await updatePermissionSchema(id, JSON.stringify(schema));
   };
+
+  useInterval(saveSchema, 10 * 1000);
 
   if (!schema) {
     return <Spinner show={true} />;
