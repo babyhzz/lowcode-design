@@ -1,5 +1,5 @@
+import { PermissionType } from '@/types/enums';
 import { ApiProperty } from '@nestjs/swagger';
-import { PermissionType } from '@packages/shared';
 import { Prisma } from '@prisma/client';
 
 export class CreatePermissionDto implements Prisma.PermissionCreateInput {

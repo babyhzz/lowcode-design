@@ -1,5 +1,5 @@
+import { ResponseStatus } from '@/types/enums';
 import { Injectable, NestInterceptor, ExecutionContext, CallHandler } from '@nestjs/common';
-import { ResponseStatus } from '@packages/shared';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 

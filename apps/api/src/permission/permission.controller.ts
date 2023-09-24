@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { PermissionService } from './permission.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
+import { PermissionTypeOptions, SchemaTypeOptions } from '@/types/enums';
 
 @Controller('permission')
 export class PermissionController {
@@ -45,5 +46,19 @@ export class PermissionController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.permissionService.remove(id);
+  }
+
+  @Get('type/options')
+  getTypeOptions() {
+    return {
+      options: PermissionTypeOptions,
+    };
+  }
+
+  @Get('schema/options')
+  getSchemaTypeOptions() {
+    return {
+      options: SchemaTypeOptions,
+    };
   }
 }
