@@ -15,7 +15,7 @@
     "@ant-design/pro-components": "^2.4.4",
     "@umijs/max": "^4.0.79",
     "ahooks": "^3.7.8",
-    "amis": "^3.4.0",
+    "amis": "^3.4.1",
     "amis-editor": "^5.5.0",
     "amis-editor-core": "^5.5.0",
     "antd": "^5.4.0"

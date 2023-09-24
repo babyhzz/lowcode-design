@@ -32,12 +32,13 @@ export default function AmisEditor({}: AmisEditorProps) {
     await updatePermissionSchema(id, JSON.stringify(schema));
   };
 
-  useInterval(saveSchema, 10 * 1000);
+  // useInterval(saveSchema, 10 * 1000);
 
   if (!schema) {
     return <Spinner show={true} />;
   }
 
+  console.log(schema);
   return (
     <div className={styles.wrapper}>
       <Helmet>

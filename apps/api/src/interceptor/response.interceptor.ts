@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Response<T> {
+  status: ResponseStatus;
+  msg: string;
   data: T;
 }
 
