@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { PermissionType, SchemaType } from '@shared/types';
+import { PermissionType, SchemaType } from '@/shared/types';
 
 const prisma = new PrismaClient();
 
