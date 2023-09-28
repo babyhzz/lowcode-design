@@ -11,5 +11,7 @@ import { PermissionModule } from './modules/permission/permission.module';
   providers: [AppService],
 })
 export class AppModule {
-  constructor() {}
+  constructor() {
+    // TODO
+  }
 }
