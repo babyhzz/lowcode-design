@@ -1,4 +1,4 @@
-import { PermissionType } from '@/types/enums';
+import { PermissionType } from '@shared/types';
 import { ApiProperty } from '@nestjs/swagger';
 import { Prisma } from '@prisma/client';
 

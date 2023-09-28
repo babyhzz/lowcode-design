@@ -1,7 +1,7 @@
 import type { RequestConfig } from 'umi';
 
 import { getPermissionMenus } from './services/permission';
-import { arrayToTree } from '@packages/shared';
+import { arrayToTree } from '@shared/utils';
 import { RunTimeLayoutConfig } from '@umijs/max';
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
