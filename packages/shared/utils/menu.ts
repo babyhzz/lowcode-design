@@ -5,7 +5,7 @@ export function arrayToTree<
     children?: T[];
   },
 >(arr: T[], parentId: T['parentId'] = null) {
-  const tree = [];
+  const tree: T[] = [];
   for (let i = 0; i < arr.length; i++) {
     const node = arr[i];
     if (node.parentId === parentId) {
