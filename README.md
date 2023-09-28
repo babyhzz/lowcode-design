@@ -5,7 +5,14 @@ pnpm prisma migrate dev --name 'init'
 pnpm prisma db seed
 pnpm prisma db push
 
-TODO:
+记录：
 
-1. amis 渲染器 fetcher 错误，渲染器配置项优化、
-2. amis 编辑器集成
+1. 请求使用相对地址
+
+## TODO:
+
+1. 菜单增删改查树形结构
+
+---
+
+1. workspace shared 引入错误---低优先级

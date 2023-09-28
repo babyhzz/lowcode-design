@@ -3,6 +3,7 @@ import { PermissionService } from './permission.service';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionTypeOptions, SchemaTypeOptions } from '@/types/enums';
+import { arrayToTree } from '@packages/shared';
 
 @Controller('permission')
 export class PermissionController {
@@ -21,6 +22,11 @@ export class PermissionController {
   @Get('menus')
   findAllMenus() {
     return this.permissionService.findAllMenus();
+  }
+
+  @Get('menus/tree')
+  async findAllMenusTree() {
+    return arrayToTree(await this.permissionService.findAllMenus());
   }
 
   @Get(':id')
