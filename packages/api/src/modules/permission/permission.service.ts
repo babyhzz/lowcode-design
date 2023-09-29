@@ -2,13 +2,27 @@ import { Injectable } from '@nestjs/common';
 import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PrismaService } from '@/modules/prisma/prisma.service';
-import { PermissionType } from '@/shared/types';
+import { PermissionType, SchemaType } from '@/shared/types';
 
 @Injectable()
 export class PermissionService {
   constructor(private prisma: PrismaService) {}
 
   create(createPermissionDto: CreatePermissionDto) {
+    if (!createPermissionDto.parentId) {
+      createPermissionDto.parentId = null;
+    }
+
+    createPermissionDto.schemaType = SchemaType.AMIS;
+
+    if (createPermissionDto.type === PermissionType.PAGE) {
+      createPermissionDto.schemaContent = JSON.stringify({
+        type: 'page',
+        title: createPermissionDto.name,
+        body: [],
+      });
+    }
+
     return this.prisma.permission.create({ data: createPermissionDto });
   }
 

@@ -32,7 +32,7 @@ export default function AmisEditor({}: AmisEditorProps) {
     await updatePermissionSchema(id, JSON.stringify(schema));
   };
 
-  // useInterval(saveSchema, 5 * 1000);
+  useInterval(saveSchema, 3 * 1000);
 
   if (!schema) {
     return <Spinner show={true} />;

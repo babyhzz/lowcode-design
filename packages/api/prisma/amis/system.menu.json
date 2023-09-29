@@ -3,204 +3,233 @@
   "title": "菜单管理",
   "body": [
     {
-      "type": "flex",
-      "className": "p-1",
-      "items": [
+      "type": "crud",
+      "syncLocation": false,
+      "api": {
+        "method": "get",
+        "url": "http://localhost:3000/permission/menu-tree",
+        "messages": {},
+        "requestAdaptor": "",
+        "adaptor": ""
+      },
+      "bulkActions": [],
+      "itemActions": [],
+      "features": ["create", "filter", "update", "view", "delete"],
+      "filterColumnCount": 3,
+      "headerToolbar": [
         {
-          "type": "container",
-          "body": [
+          "label": "新增",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "dialog": {
+            "type": "dialog",
+            "title": "新增",
+            "body": [
+              {
+                "type": "form",
+                "api": {
+                  "method": "post",
+                  "url": "http://localhost:3000/permission",
+                  "messages": {},
+                  "requestAdaptor": "",
+                  "adaptor": ""
+                },
+                "body": [
+                  {
+                    "type": "tree-select",
+                    "label": "树选择框",
+                    "name": "parentId",
+                    "id": "u:b1b68840b1a8",
+                    "source": { "url": "/permission/menu-tree", "method": "get" },
+                    "labelField": "name",
+                    "valueField": "id",
+                    "multiple": false,
+                    "enableNodePath": false,
+                    "hideRoot": true,
+                    "showIcon": false,
+                    "initiallyOpen": true,
+                    "onEvent": {}
+                  },
+                  {
+                    "type": "select",
+                    "name": "type",
+                    "label": "权限类型",
+                    "id": "u:3a6bff6f31a1",
+                    "source": {
+                      "url": "permission/type/options",
+                      "method": "get",
+                      "requestAdaptor": "",
+                      "adaptor": "",
+                      "messages": {}
+                    },
+                    "multiple": false
+                  },
+                  { "type": "input-text", "name": "name", "label": "名称", "id": "u:95691d6a1dfe" },
+                  { "type": "input-text", "name": "path", "label": "路径", "id": "u:de6810a320e9" },
+                  {
+                    "type": "input-text",
+                    "name": "redirect",
+                    "label": "重定向",
+                    "id": "u:5e884674d805",
+                    "editorState": "default"
+                  },
+                  {
+                    "type": "input-text",
+                    "name": "description",
+                    "label": "描述",
+                    "id": "u:cc437d2ba999",
+                    "editorState": "default"
+                  }
+                ],
+                "id": "u:9d4175c10c0f"
+              }
+            ],
+            "id": "u:e76abafad3bf",
+            "showCloseButton": true,
+            "closeOnEsc": false,
+            "showErrorMsg": true,
+            "showLoading": true,
+            "withDefaultData": false,
+            "dataMapSwitch": false
+          },
+          "id": "u:9d760ffea38c"
+        },
+        "bulkActions"
+      ],
+      "id": "u:1e307e63b1f2",
+      "perPageAvailable": [10],
+      "messages": {},
+      "defaultParams": {},
+      "mode": "table",
+      "columnsTogglable": "auto",
+      "filterSettingSource": [
+        "id",
+        "parentId",
+        "type",
+        "name",
+        "path",
+        "redirect",
+        "schemaType",
+        "schemaContent",
+        "description",
+        "createdAt",
+        "createdBy",
+        "updatedAt",
+        "updatedBy"
+      ],
+      "columns": [
+        {
+          "label": "权限类型",
+          "type": "text",
+          "name": "typeName",
+          "id": "u:8f1c13608b2b",
+          "map": { "1": "菜单", "2": "页面" }
+        },
+        { "label": "名称", "type": "text", "name": "name", "id": "u:bab6b8330019", "placeholder": "-" },
+        { "label": "路径", "type": "text", "name": "path", "id": "u:0d5ed3cb0730", "placeholder": "-" },
+        { "label": "redirect", "type": "text", "name": "redirect", "id": "u:225237eb1536" },
+        { "label": "schemaType", "type": "text", "name": "schemaType", "id": "u:fa35d0b30211" },
+        { "label": "description", "type": "text", "name": "description", "id": "u:362e62b0f979" },
+        {
+          "type": "datetime",
+          "value": 1694823785,
+          "name": "createdAt",
+          "label": "createdAt",
+          "format": "YYYY-MM-DD HH:mm",
+          "id": "u:a701ed985067"
+        },
+        { "label": "createdBy", "type": "text", "name": "createdBy", "id": "u:c109b724f5c1" },
+        {
+          "type": "operation",
+          "label": "操作",
+          "buttons": [
             {
-              "type": "crud",
-              "syncLocation": false,
+              "label": "编辑",
+              "type": "button",
+              "actionType": "dialog",
+              "level": "link",
+              "dialog": {
+                "title": "编辑",
+                "body": {
+                  "type": "form",
+                  "api": "xxx/update",
+                  "body": [
+                    { "label": "type", "name": "type", "id": "u:8f1c13608b2b", "type": "input-text" },
+                    { "label": "name", "name": "name", "id": "u:bab6b8330019", "type": "input-text" },
+                    { "label": "path", "name": "path", "id": "u:0d5ed3cb0730", "type": "input-text" },
+                    { "label": "redirect", "name": "redirect", "id": "u:225237eb1536", "type": "input-text" },
+                    { "label": "schemaType", "name": "schemaType", "id": "u:fa35d0b30211", "type": "input-text" },
+                    { "label": "description", "name": "description", "id": "u:362e62b0f979", "type": "input-text" },
+                    { "label": "createdAt", "name": "createdAt", "id": "u:29e285d657a1", "type": "input-text" },
+                    { "label": "createdBy", "name": "createdBy", "id": "u:c109b724f5c1", "type": "input-text" }
+                  ]
+                }
+              },
+              "id": "u:469482f57170"
+            },
+            {
+              "label": "查看",
+              "type": "button",
+              "actionType": "dialog",
+              "level": "link",
+              "dialog": {
+                "title": "查看详情",
+                "body": {
+                  "type": "form",
+                  "api": "xxx/update",
+                  "body": [
+                    { "label": "type", "name": "type", "id": "u:8f1c13608b2b", "type": "static" },
+                    { "label": "name", "name": "name", "id": "u:bab6b8330019", "type": "static" },
+                    { "label": "path", "name": "path", "id": "u:0d5ed3cb0730", "type": "static" },
+                    { "label": "redirect", "name": "redirect", "id": "u:225237eb1536", "type": "static" },
+                    { "label": "schemaType", "name": "schemaType", "id": "u:fa35d0b30211", "type": "static" },
+                    { "label": "description", "name": "description", "id": "u:362e62b0f979", "type": "static" },
+                    { "label": "createdAt", "name": "createdAt", "id": "u:29e285d657a1", "type": "static" },
+                    { "label": "createdBy", "name": "createdBy", "id": "u:c109b724f5c1", "type": "static" }
+                  ]
+                }
+              },
+              "id": "u:05766fb70a99"
+            },
+            {
+              "type": "button",
+              "label": "删除",
+              "actionType": "ajax",
+              "level": "link",
+              "className": "text-danger",
+              "confirmText": "确定要删除？",
               "api": {
-                "method": "get",
+                "method": "post",
                 "url": "http://localhost:3000/permission/menus",
                 "messages": {},
                 "requestAdaptor": "",
                 "adaptor": ""
               },
-              "bulkActions": [],
-              "itemActions": [],
-              "features": ["create", "filter"],
-              "filterColumnCount": 3,
-              "headerToolbar": [
-                {
-                  "label": "新增",
-                  "type": "button",
-                  "actionType": "dialog",
-                  "level": "primary",
-                  "dialog": {
-                    "title": "新增",
-                    "body": {
-                      "type": "form",
-                      "api": {
-                        "method": "post",
-                        "url": "http://localhost:3000/permission/menus",
-                        "messages": {},
-                        "requestAdaptor": "",
-                        "adaptor": ""
-                      },
-                      "body": [
-                        {
-                          "type": "input-text",
-                          "name": "type",
-                          "label": "type"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "name",
-                          "label": "name"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "path",
-                          "label": "path"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "redirect",
-                          "label": "redirect"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "schemaType",
-                          "label": "schemaType"
-                        },
-                        {
-                          "type": "input-json",
-                          "name": "schemaContent",
-                          "label": "schemaContent"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "description",
-                          "label": "description"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "createdAt",
-                          "label": "createdAt"
-                        },
-                        {
-                          "type": "input-text",
-                          "name": "createdBy",
-                          "label": "createdBy"
-                        },
-                        {
-                          "type": "input-operation",
-                          "label": "操作"
-                        }
-                      ]
-                    }
-                  },
-                  "id": "u:6001127f28a3"
-                },
-                "bulkActions"
-              ],
-              "id": "u:1e307e63b1f2",
-              "perPageAvailable": [10],
-              "messages": {},
-              "defaultParams": {},
-              "mode": "table",
-              "columnsTogglable": "auto",
-              "filterSettingSource": [
-                "id",
-                "parentId",
-                "type",
-                "name",
-                "path",
-                "redirect",
-                "schemaType",
-                "schemaContent",
-                "description",
-                "createdAt",
-                "createdBy",
-                "updatedAt",
-                "updatedBy"
-              ],
-              "columns": [
-                {
-                  "label": "type",
-                  "type": "text",
-                  "name": "type",
-                  "id": "u:8f1c13608b2b"
-                },
-                {
-                  "label": "name",
-                  "type": "text",
-                  "name": "name",
-                  "id": "u:bab6b8330019"
-                },
-                {
-                  "label": "path",
-                  "type": "text",
-                  "name": "path",
-                  "id": "u:0d5ed3cb0730"
-                },
-                {
-                  "label": "redirect",
-                  "type": "text",
-                  "name": "redirect",
-                  "id": "u:225237eb1536"
-                },
-                {
-                  "label": "schemaType",
-                  "type": "text",
-                  "name": "schemaType",
-                  "id": "u:fa35d0b30211"
-                },
-                {
-                  "label": "description",
-                  "type": "text",
-                  "name": "description",
-                  "id": "u:362e62b0f979"
-                },
-                {
-                  "label": "createdAt",
-                  "type": "text",
-                  "name": "createdAt",
-                  "id": "u:29e285d657a1"
-                },
-                {
-                  "label": "createdBy",
-                  "type": "text",
-                  "name": "createdBy",
-                  "id": "u:c109b724f5c1"
-                },
-                {
-                  "type": "operation",
-                  "label": "操作",
-                  "buttons": [],
-                  "id": "u:013ade7c6f5d"
+              "id": "u:ed9f83d467b9"
+            },
+            {
+              "type": "button",
+              "label": "配置",
+              "onEvent": {
+                "click": {
+                  "actions": [{ "actionType": "url", "args": { "url": "/page-editor", "params": { "id": "${id}" } } }]
                 }
-              ]
+              },
+              "id": "u:e919b182bf10",
+              "level": "link",
+              "hiddenOn": "${type !== 2}"
             }
           ],
-          "size": "xs",
-          "style": {
-            "position": "static",
-            "display": "block",
-            "flex": "1 1 auto",
-            "flexGrow": 1,
-            "flexBasis": "auto"
-          },
-          "wrapperBody": false,
-          "isFixedHeight": false,
-          "isFixedWidth": false,
-          "id": "u:d8ccc9168549"
+          "id": "u:2fe3b8d5c14b"
         }
       ],
-      "style": {
-        "position": "relative"
-      },
-      "id": "u:2c86ac1b4041"
+      "filter": null
     }
   ],
   "id": "u:4098d4c00086",
   "aside": [],
   "asideResizor": false,
-  "pullRefresh": {
-    "disabled": true
-  },
+  "pullRefresh": { "disabled": true },
   "regions": ["body"]
 }

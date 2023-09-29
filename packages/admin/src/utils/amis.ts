@@ -1,11 +1,12 @@
-import { RenderOptions } from "amis";
+import { RenderOptions } from 'amis';
 import { request } from '@umijs/max';
 
+export const fetcher: RenderOptions['fetcher'] = (config) => {
+  const { url, method, data } = config;
 
-export const fetcher: RenderOptions['fetcher'] = config => {
-  const { url, method } = config;
-
+  console.log('config:', config);
   return request(url, {
-    method
-  })
-}
+    method,
+    data,
+  });
+};
