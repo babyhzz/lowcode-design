@@ -24,7 +24,7 @@ export class PermissionController {
     return this.permissionService.findAllMenus();
   }
 
-  @Get('menus/tree')
+  @Get('menu-tree')
   async findAllMenusTree() {
     return arrayToTree(await this.permissionService.findAllMenus());
   }

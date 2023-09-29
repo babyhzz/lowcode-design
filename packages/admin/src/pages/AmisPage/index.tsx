@@ -1,6 +1,7 @@
 import AmisRenderer from '@/components/AmisRenderer';
 import useSchema from '@/hooks/useSchema';
-import { Helmet, useLocation, useModel } from '@umijs/max';
+import { treeToArray } from '@/utils/array';
+import { Helmet, useLocation, useModel, useRouteData } from '@umijs/max';
 
 const schema = {
   type: 'page',
@@ -165,12 +166,15 @@ const AmisPage: React.FC = () => {
   const location = useLocation();
 
   const {
-    initialState: { menus },
+    initialState: { menuTree },
   } = useModel('@@initialState');
 
+  const menus = treeToArray(menuTree);
   const menuItem = menus.find((m: any) => m.path === location.pathname);
   const { schema } = useSchema(menuItem?.id);
 
+  const data = useRouteData();
+  console.log('data', data);
   return (
     <div className="h-screen">
       <AmisRenderer schema={schema} />

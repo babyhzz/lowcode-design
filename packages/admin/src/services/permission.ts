@@ -5,6 +5,13 @@ export async function getPermissionMenus() {
     method: 'GET',
   });
 }
+
+export async function getPermissionMenuTree() {
+  return request('/permission/menu-tree', {
+    method: 'GET',
+  });
+}
+
 export async function getPermissionSchema(id: string | null | undefined) {
   return request(`/permission/${id}/schema`, {
     method: 'GET',
