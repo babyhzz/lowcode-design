@@ -1,3 +1,5 @@
+import { Options } from '../constants';
+
 export function arrayToTree<
   T extends {
     id: string;
@@ -17,4 +19,8 @@ export function arrayToTree<
     }
   }
   return tree;
+}
+
+export function getOptionLabel<T>(value: T, options: Options<T>): string {
+  return options.find((option) => option.value === value)?.label;
 }

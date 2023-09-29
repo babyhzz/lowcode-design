@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { PermissionService } from './permission.service';
-import { CreatePermissionDto } from './dto/create-permission.dto';
-import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionTypeOptions, SchemaTypeOptions } from '@/shared/constants';
 import { arrayToTree } from '@/shared/utils';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { CreatePermissionDto } from './dto/create-permission.dto';
+import { PermissionItemDto } from './dto/item-permission.dto';
+import { UpdatePermissionDto } from './dto/update-permission.dto';
+import { PermissionService } from './permission.service';
 
 @Controller('permission')
 export class PermissionController {
@@ -20,13 +21,13 @@ export class PermissionController {
   }
 
   @Get('menus')
-  findAllMenus() {
-    return this.permissionService.findAllMenus();
+  async findAllMenus() {
+    return (await this.permissionService.findAllMenus()).map((m) => new PermissionItemDto(m));
   }
 
   @Get('menu-tree')
   async findAllMenusTree() {
-    return arrayToTree(await this.permissionService.findAllMenus());
+    return arrayToTree((await this.permissionService.findAllMenus()).map((m) => new PermissionItemDto(m)));
   }
 
   @Get(':id')

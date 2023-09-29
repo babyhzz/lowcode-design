@@ -39,7 +39,7 @@ export class PermissionService {
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} permission`;
+    return this.prisma.permission.findUnique({ where: { id } });
   }
 
   async findOneScheme(id: string) {

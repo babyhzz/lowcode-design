@@ -1,6 +1,6 @@
 import { PermissionType, SchemaType } from '../types';
 
-type Options<T> = Array<{ value: T; label: string }>;
+export type Options<T> = Array<{ value: T; label: string }>;
 
 export const PermissionTypeOptions: Options<PermissionType> = [
   { value: PermissionType.MENU, label: '菜单' },
