@@ -2,7 +2,7 @@ import { PermissionTypeOptions, SchemaTypeOptions } from '@/shared/constants';
 import { arrayToTree } from '@/shared/utils';
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreatePermissionDto } from './dto/create-permission.dto';
-import { PermissionItemDto } from './dto/item-permission.dto';
+import { PermissionItemDto } from './dto/PermissionItem.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionService } from './permission.service';
 

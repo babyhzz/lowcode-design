@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import styles from './index.less';
 import { Button, Space } from 'antd';
 import { useInterval } from 'ahooks';
+import { fetcher } from '@/utils/amis';
 
 interface AmisEditorProps {
   name?: string;
@@ -51,7 +52,14 @@ export default function AmisEditor({}: AmisEditorProps) {
           </Button>
         </Space>
       </div>
-      <Editor value={schema} onChange={setSchema} className={styles.editor} />
+      <Editor
+        value={schema}
+        onChange={setSchema}
+        className={styles.editor}
+        amisEnv={{
+          fetcher: fetcher,
+        }}
+      />
     </div>
   );
 }

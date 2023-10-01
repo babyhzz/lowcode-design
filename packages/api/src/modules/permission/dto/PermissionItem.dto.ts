@@ -1,4 +1,4 @@
-import { PermissionTypeOptions } from '@/shared/constants';
+import { PermissionTypeOptions, SchemaTypeOptions } from '@/shared/constants';
 import { getOptionLabel } from '@/shared/utils';
 import { Permission } from '@prisma/client';
 import { Expose } from 'class-transformer';
@@ -25,5 +25,10 @@ export class PermissionItemDto implements Permission {
   @Expose()
   get typeName(): string {
     return getOptionLabel(this.type, PermissionTypeOptions);
+  }
+
+  @Expose()
+  get schemaTypeName(): string {
+    return getOptionLabel(this.schemaType, SchemaTypeOptions);
   }
 }
