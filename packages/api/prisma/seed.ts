@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 // 6ec2a4d7-58d9-4e85-906b-8534cf011a4a
 
 function constructAmisPage(path: string, name: string, parentId: string) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const json = require(`./amis/${path.slice(1).replace(/\//g, '.')}.json`);
 
   return {

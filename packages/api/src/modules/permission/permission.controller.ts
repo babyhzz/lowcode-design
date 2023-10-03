@@ -5,6 +5,7 @@ import { CreatePermissionDto } from './dto/create-permission.dto';
 import { PermissionItemDto } from './dto/PermissionItem.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionService } from './permission.service';
+import { Public } from '@/metas/public';
 
 @Controller('permission')
 export class PermissionController {
