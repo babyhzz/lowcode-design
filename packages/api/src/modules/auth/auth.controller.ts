@@ -1,16 +1,20 @@
-import { Controller, Request, Post, UseGuards } from '@nestjs/common';
-import { LocalAuthGuard } from './local-auth.guard';
-import { AuthService } from './auth.service';
 import { Public } from '@/metas/public';
+import { Controller, HttpException, HttpStatus, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Public()
-  @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    const user = await this.authService.validateUser(req.body.username, req.body.password);
+    if (!user) {
+      // throw new HttpException('用户名或密码错误', HttpStatus.UNAUTHORIZED);
+      throw new UnauthorizedException('用户名或密码错误');
+    }
+
+    return this.authService.login(user);
   }
 }
