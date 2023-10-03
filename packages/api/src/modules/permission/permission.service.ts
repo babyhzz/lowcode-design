@@ -52,6 +52,11 @@ export class PermissionService {
     return permissions;
   }
 
+  async findFirstAvailableMenuPath() {
+    const menus = await this.findAllMenus();
+    return menus.filter((menu) => menu.type === PermissionType.PAGE)[0].path;
+  }
+
   findOne(id: string) {
     return this.prisma.permission.findUnique({ where: { id } });
   }

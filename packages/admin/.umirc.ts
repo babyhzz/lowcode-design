@@ -4,7 +4,7 @@ export default defineConfig({
   antd: {
     theme: {
       token: {
-        colorPrimary: '#2468f2',
+        colorPrimary: '#2139e2',
         borderRadius: 4,
       },
     },
@@ -14,13 +14,15 @@ export default defineConfig({
   initialState: {},
   request: {},
   layout: {
-    title: '@umijs/max',
+    logo: null,
+    title: '低代码',
   },
   routes: [
     {
-      name: '首页',
-      path: '/home',
-      component: './Home',
+      name: '登录',
+      path: '/login',
+      component: './Login',
+      layout: false,
     },
     {
       name: 'Amis编辑器',

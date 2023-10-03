@@ -2,7 +2,7 @@ export function treeToArray<
   T extends {
     id: string;
     children: T[] | undefined;
-  },
+  } = any,
 >(tree: T[] | undefined) {
   if (!tree) return [];
 
