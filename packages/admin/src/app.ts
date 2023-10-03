@@ -43,5 +43,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
         return initialState.menuTree || [];
       },
     },
+    contentStyle: {
+      padding: 0,
+    },
   };
 };
