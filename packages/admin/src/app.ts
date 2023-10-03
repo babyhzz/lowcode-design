@@ -44,7 +44,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       },
     },
     contentStyle: {
-      padding: 0,
+      padding: 16,
+      height: '100vh',
     },
   };
 };

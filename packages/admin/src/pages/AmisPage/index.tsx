@@ -16,7 +16,7 @@ const AmisPage: React.FC = () => {
   const { schema } = useSchema(menuItem?.id);
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <AmisRenderer schema={schema} />
     </div>
   );
