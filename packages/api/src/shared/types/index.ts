@@ -1,3 +1,13 @@
+export const enum ResponseStatus {
+  SUCCESS = 0,
+}
+
+export interface Result<T> {
+  status: ResponseStatus;
+  msg: string;
+  data: T;
+}
+
 export const enum PermissionType {
   MENU = 1,
   PAGE = 2,
@@ -7,8 +17,4 @@ export const enum PermissionType {
 export const enum SchemaType {
   /** 百度 amis 低代码 */
   AMIS = 1,
-}
-
-export const enum ResponseStatus {
-  SUCCESS = 0,
 }

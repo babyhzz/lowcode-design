@@ -4,11 +4,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import { ResponseInterceptor } from './interceptors/response.interceptor';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   app.useGlobalInterceptors(new ResponseInterceptor());
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   // swagger
   const config = new DocumentBuilder()
