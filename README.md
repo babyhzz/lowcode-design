@@ -11,8 +11,5 @@ pnpm prisma db push
 
 ## TODO:
 
-1. 菜单增删改查树形结构
-
----
-
-1. workspace shared 引入错误---低优先级
+- 密码 hash 值存储及比较
+-
