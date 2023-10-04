@@ -47,6 +47,7 @@ export class PermissionService {
         schemaType: true,
         createdAt: true,
         createdBy: true,
+        createdUser: true,
       },
     });
     return permissions;

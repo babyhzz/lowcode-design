@@ -1,7 +1,7 @@
 import { PermissionTypeOptions, SchemaTypeOptions } from '@/shared/constants';
 import { getOptionLabel } from '@/shared/utils';
 import { Permission } from '@prisma/client';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose, Transform } from 'class-transformer';
 
 export class PermissionItemDto implements Permission {
   id: string;
@@ -14,9 +14,15 @@ export class PermissionItemDto implements Permission {
   schemaContent: string;
   description: string;
   createdAt: Date;
+
+  @Exclude()
   createdBy: string;
+
   updatedAt: Date;
   updatedBy: string;
+
+  @Transform(({ value }) => value.name)
+  createdUser: string;
 
   constructor(partial: Partial<Permission>) {
     Object.assign(this, partial);

@@ -1,8 +1,7 @@
 import { PermissionType } from '@/shared/types';
 import { ApiProperty } from '@nestjs/swagger';
-import { Prisma } from '@prisma/client';
 
-export class CreatePermissionDto implements Prisma.PermissionCreateInput {
+export class CreatePermissionDto {
   @ApiProperty({
     required: false,
   })
@@ -34,5 +33,5 @@ export class CreatePermissionDto implements Prisma.PermissionCreateInput {
   })
   schemaContent?: string;
 
-  createdBy?: string;
+  createdBy: string;
 }
