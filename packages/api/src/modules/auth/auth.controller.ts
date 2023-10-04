@@ -1,5 +1,5 @@
 import { Public } from '@/metas/public';
-import { Controller, HttpException, HttpStatus, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { Controller, Post, Request, UnauthorizedException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')

@@ -33,4 +33,6 @@ export class CreatePermissionDto implements Prisma.PermissionCreateInput {
     required: false,
   })
   schemaContent?: string;
+
+  createdBy?: string;
 }

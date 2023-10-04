@@ -23,15 +23,16 @@ model Article {
 }
 
 model User {
-  id        String     @id @default(uuid())
-  username  String
-  name      String
-  password  String
-  createdAt DateTime   @default(now())
-  createdBy String?
-  updatedAt DateTime   @updatedAt
-  updatedBy String?
-  roles     UserRole[]
+  id         String       @id @default(uuid())
+  username   String
+  name       String
+  password   String
+  createdAt  DateTime     @default(now())
+  createdBy  String?
+  updatedAt  DateTime     @updatedAt
+  updatedBy  String?
+  roles      UserRole[]
+  Permission Permission[]
 }
 
 model UserRole {
@@ -79,7 +80,8 @@ model Permission {
   schemaContent String?          @db.Text
   description   String?
   createdAt     DateTime         @default(now())
-  createdBy     String?
+  createdBy     String
+  createdUser   User             @relation(fields: [createdBy], references: [id])
   updatedAt     DateTime         @updatedAt
   updatedBy     String?
   roles         RolePermission[]

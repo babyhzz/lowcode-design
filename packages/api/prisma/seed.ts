@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, User } from '@prisma/client';
 import { PermissionType, SchemaType } from '@/shared/types';
 
 const prisma = new PrismaClient();
@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 // uuid:
 // 6ec2a4d7-58d9-4e85-906b-8534cf011a4a
 
-function constructAmisPage(path: string, name: string, parentId: string) {
+function constructAmisPage(path: string, name: string, parentId: string, createdBy: string) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const json = require(`./amis/${path.slice(1).replace(/\//g, '.')}.json`);
 
@@ -17,10 +17,11 @@ function constructAmisPage(path: string, name: string, parentId: string) {
     type: PermissionType.PAGE,
     schemaType: SchemaType.AMIS,
     schemaContent: JSON.stringify(json),
+    createdBy,
   };
 }
 
-async function initSystemPermission() {
+async function initSystemPermission(user: User) {
   await prisma.permission.deleteMany();
 
   const parent = await prisma.permission.create({
@@ -29,20 +30,34 @@ async function initSystemPermission() {
       type: PermissionType.MENU,
       path: '/system',
       redirect: '/system/menu',
+      createdBy: user.id,
     },
   });
 
   await prisma.permission.createMany({
     data: [
-      constructAmisPage('/system/menu', '系统菜单', parent.id),
-      constructAmisPage('/system/user', '系统用户', parent.id),
-      constructAmisPage('/system/role', '系统角色', parent.id),
+      constructAmisPage('/system/menu', '系统菜单', parent.id, user.id),
+      constructAmisPage('/system/user', '系统用户', parent.id, user.id),
+      constructAmisPage('/system/role', '系统角色', parent.id, user.id),
     ],
   });
 }
 
+async function initAdminUser() {
+  const user = await prisma.user.create({
+    data: {
+      username: 'admin',
+      password: '123',
+      name: '管理员',
+    },
+  });
+
+  return user;
+}
+
 async function main() {
-  await initSystemPermission();
+  const adminUser = await initAdminUser();
+  await initSystemPermission(adminUser);
 }
 
 // execute the main function

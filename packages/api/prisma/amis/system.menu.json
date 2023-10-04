@@ -5,13 +5,7 @@
     {
       "type": "crud",
       "syncLocation": false,
-      "api": {
-        "method": "get",
-        "url": "http://localhost:3000/permission/menu-tree",
-        "messages": {},
-        "requestAdaptor": "",
-        "adaptor": ""
-      },
+      "api": { "method": "get", "url": "/permission/menu-tree", "messages": {}, "requestAdaptor": "", "adaptor": "" },
       "bulkActions": [],
       "itemActions": [],
       "features": ["create", "filter", "update", "view", "delete"],
@@ -23,14 +17,13 @@
           "actionType": "dialog",
           "level": "primary",
           "dialog": {
-            "type": "dialog",
             "title": "新增",
             "body": [
               {
                 "type": "form",
                 "api": {
                   "method": "post",
-                  "url": "http://localhost:3000/permission",
+                  "url": "/permission/menu-tree",
                   "messages": {},
                   "requestAdaptor": "",
                   "adaptor": ""
@@ -38,62 +31,46 @@
                 "body": [
                   {
                     "type": "tree-select",
-                    "label": "树选择框",
                     "name": "parentId",
-                    "id": "u:b1b68840b1a8",
-                    "source": { "url": "/permission/menu-tree", "method": "get" },
-                    "labelField": "name",
-                    "valueField": "id",
+                    "label": "父节点",
+                    "id": "u:0e3f77a1f7cf",
                     "multiple": false,
                     "enableNodePath": false,
                     "hideRoot": true,
                     "showIcon": false,
                     "initiallyOpen": true,
-                    "onEvent": {}
+                    "onEvent": {},
+                    "source": { "url": "/permission/menu-tree", "method": "get" },
+                    "labelField": "name",
+                    "valueField": "id"
                   },
+                  { "type": "input-text", "name": "name", "label": "名称", "id": "u:ca0e63e0e00b" },
                   {
                     "type": "select",
                     "name": "type",
-                    "label": "权限类型",
-                    "id": "u:3a6bff6f31a1",
+                    "label": "类型",
+                    "id": "u:a3b550690c7d",
                     "source": {
-                      "url": "permission/type/options",
+                      "url": "/permission/type/options",
                       "method": "get",
                       "requestAdaptor": "",
                       "adaptor": "",
                       "messages": {}
                     },
+                    "value": "",
                     "multiple": false
                   },
-                  { "type": "input-text", "name": "name", "label": "名称", "id": "u:95691d6a1dfe" },
-                  { "type": "input-text", "name": "path", "label": "路径", "id": "u:de6810a320e9" },
-                  {
-                    "type": "input-text",
-                    "name": "redirect",
-                    "label": "重定向",
-                    "id": "u:5e884674d805",
-                    "editorState": "default"
-                  },
-                  {
-                    "type": "input-text",
-                    "name": "description",
-                    "label": "描述",
-                    "id": "u:cc437d2ba999",
-                    "editorState": "default"
-                  }
+                  { "type": "input-text", "name": "path", "label": "路径", "id": "u:0f62e90d5a70" },
+                  { "type": "input-text", "name": "redirect", "label": "重定向", "id": "u:4ace82d496e8" },
+                  { "type": "input-text", "name": "description", "label": "描述", "id": "u:4c343dcc438b" }
                 ],
-                "id": "u:9d4175c10c0f"
+                "id": "u:ac1f507c447e"
               }
             ],
-            "id": "u:e76abafad3bf",
-            "showCloseButton": true,
-            "closeOnEsc": false,
-            "showErrorMsg": true,
-            "showLoading": true,
-            "withDefaultData": false,
-            "dataMapSwitch": false
+            "type": "dialog",
+            "id": "u:2860056d2de8"
           },
-          "id": "u:9d760ffea38c"
+          "id": "u:769210993267"
         },
         "bulkActions"
       ],
@@ -119,27 +96,60 @@
         "updatedBy"
       ],
       "columns": [
+        { "label": "名称", "type": "text", "name": "name", "id": "u:bab6b8330019", "placeholder": "-", "width": 240 },
         {
           "label": "权限类型",
           "type": "text",
           "name": "typeName",
           "id": "u:8f1c13608b2b",
-          "map": { "1": "菜单", "2": "页面" }
+          "map": { "1": "菜单", "2": "页面" },
+          "inline": true,
+          "placeholder": "-",
+          "width": 140
         },
-        { "label": "名称", "type": "text", "name": "name", "id": "u:bab6b8330019", "placeholder": "-" },
-        { "label": "路径", "type": "text", "name": "path", "id": "u:0d5ed3cb0730", "placeholder": "-" },
-        { "label": "redirect", "type": "text", "name": "redirect", "id": "u:225237eb1536" },
-        { "label": "schemaType", "type": "text", "name": "schemaType", "id": "u:fa35d0b30211" },
-        { "label": "description", "type": "text", "name": "description", "id": "u:362e62b0f979" },
+        { "label": "路径", "type": "text", "name": "path", "id": "u:0d5ed3cb0730", "placeholder": "-", "width": 160 },
+        {
+          "label": "重定向",
+          "type": "text",
+          "name": "redirect",
+          "id": "u:225237eb1536",
+          "placeholder": "-",
+          "width": 160
+        },
+        {
+          "label": "渲染引擎",
+          "type": "text",
+          "name": "schemaTypeName",
+          "id": "u:fa35d0b30211",
+          "placeholder": "-",
+          "width": 100
+        },
+        {
+          "label": "描述",
+          "type": "text",
+          "name": "description",
+          "id": "u:362e62b0f979",
+          "placeholder": "-",
+          "width": 160
+        },
         {
           "type": "datetime",
           "value": 1694823785,
           "name": "createdAt",
-          "label": "createdAt",
+          "label": "创建时间",
           "format": "YYYY-MM-DD HH:mm",
-          "id": "u:a701ed985067"
+          "id": "u:a701ed985067",
+          "placeholder": "-",
+          "width": 160
         },
-        { "label": "createdBy", "type": "text", "name": "createdBy", "id": "u:c109b724f5c1" },
+        {
+          "label": "创建人",
+          "type": "text",
+          "name": "createdBy",
+          "id": "u:c109b724f5c1",
+          "placeholder": "-",
+          "width": 100
+        },
         {
           "type": "operation",
           "label": "操作",
@@ -221,7 +231,10 @@
               "hiddenOn": "${type !== 2}"
             }
           ],
-          "id": "u:2fe3b8d5c14b"
+          "id": "u:2fe3b8d5c14b",
+          "placeholder": "-",
+          "width": 173,
+          "fixed": "right"
         }
       ],
       "filter": null

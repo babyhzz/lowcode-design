@@ -1,18 +1,18 @@
 import { PermissionTypeOptions, SchemaTypeOptions } from '@/shared/constants';
 import { arrayToTree } from '@/shared/utils';
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
-import { CreatePermissionDto } from './dto/create-permission.dto';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Request } from '@nestjs/common';
 import { PermissionItemDto } from './dto/PermissionItem.dto';
+import { CreatePermissionDto } from './dto/create-permission.dto';
 import { UpdatePermissionDto } from './dto/update-permission.dto';
 import { PermissionService } from './permission.service';
-import { Public } from '@/metas/public';
 
 @Controller('permission')
 export class PermissionController {
   constructor(private readonly permissionService: PermissionService) {}
 
-  @Post()
-  create(@Body() createPermissionDto: CreatePermissionDto) {
+  @Post('menu-tree')
+  create(@Request() req, @Body() createPermissionDto: CreatePermissionDto) {
+    createPermissionDto.createdBy = req.user.userId;
     return this.permissionService.create(createPermissionDto);
   }
 
