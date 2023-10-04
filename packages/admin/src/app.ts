@@ -1,8 +1,10 @@
 import type { RequestConfig } from 'umi';
 
-import { RunTimeLayoutConfig } from '@umijs/max';
+import { RunTimeLayoutConfig, history } from '@umijs/max';
 import { getPermissionMenuTree } from './services/permission';
 import { getToken } from './utils/storage';
+import { PageEnum } from './constants';
+import { message } from 'antd';
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
@@ -28,7 +30,23 @@ export const request: RequestConfig = {
       };
     },
   ],
-  responseInterceptors: [],
+  responseInterceptors: [
+    (response: any) => {
+      const { status, msg } = response.data;
+
+      if (status !== 0) {
+        switch (status) {
+          case 401:
+            history.replace(PageEnum.Login);
+            break;
+          default:
+            message.error(msg);
+        }
+      }
+
+      return response;
+    },
+  ],
 };
 
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {

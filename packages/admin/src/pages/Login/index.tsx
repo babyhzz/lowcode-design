@@ -2,15 +2,18 @@ import { login } from '@/services/auth';
 import { setToken } from '@/utils/storage';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginFormPage, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
+import { useModel } from '@umijs/max';
 import { useNavigate } from '@umijs/max';
 
 export default () => {
   const navigate = useNavigate();
+  const { refresh } = useModel('@@initialState');
 
   const handleLogin = async (values: any) => {
     const res = await login(values.username, values.password);
     if (res.status === 0) {
       setToken(res.data.access_token);
+      await refresh();
       navigate(res.data.initPath);
     } else {
     }
